@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="KTBookStore.Views.Admin.AdminManager"
+             Title="Khu vực quản lý chức năng của admin">
+
+    <ContentPage.Content>
+        <StackLayout>
+            <!--Header-->
+            <StackLayout>
+                <Grid RowDefinitions="Auto, Auto"
+              ColumnDefinitions="Auto, *, Auto"
+              ColumnSpacing="10"
+              Padding="15, 10, 15, 5"
+            BackgroundColor="AliceBlue">
+                    <Image Grid.Row="0" Grid.Column="0" Source="home.png" Aspect="AspectFill" HeightRequest="30" WidthRequest="30" HorizontalOptions="Start"/>
+                    <StackLayout Margin="5" Orientation="Horizontal" Grid.Row="0" Grid.Column="4">
+                        <ImageButton x:Name="imgUserLogin" HorizontalOptions="Center"  Aspect="AspectFill" Source="user.png" HeightRequest="30" WidthRequest="30" />
+                        <Label HorizontalOptions="Center" Text="Guest" x:Name="NameUser" FontAttributes="None"/>
+                    </StackLayout>
+                </Grid>
+            </StackLayout>
+            <!--End Header-->
+
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Xin chào" TextColor="Black" FontSize="24" FontAttributes="Bold" Margin="15"/>
+                <Label x:Name="LbNameUser" TextColor="Black" FontSize="24" FontAttributes="Bold" Margin="15"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Vertical" HorizontalOptions="StartAndExpand">
+                <StackLayout Margin="5" Orientation="Horizontal">
+                    <ImageButton Clicked="ShowListUser_Clicked" HorizontalOptions="Center"  Aspect="AspectFill" Source="https://www.clipartmax.com/png/middle/3-37704_users-blue-icon-png.png" HeightRequest="80" WidthRequest="80" />
+                    <Label HorizontalOptions="Center" Text="User" TextColor="Gray" FontSize="18" FontAttributes="None" VerticalTextAlignment="Center" Margin="10"/>
+                </StackLayout>
+                <StackLayout Margin="5" Orientation="Horizontal" x:Name="ShowListBook">
+                    <ImageButton Clicked="ShowListBook_Clicked" HorizontalOptions="Center" Aspect="AspectFill"  Source="https://www.clipartmax.com/png/middle/0-3509_book-clip-art-book-clip-art.png" HeightRequest="80" WidthRequest="80"  />
+                    <Label  HorizontalOptions="Center" Text="Book" TextColor="Gray" FontSize="18" FontAttributes="None" VerticalTextAlignment="Center" Margin="10"/>
+                </StackLayout>
+                <StackLayout Margin="5" Orientation="Horizontal" x:Name="ShowListCart">
+                    <ImageButton Clicked="ShowListCart_Clicked" HorizontalOptions="Center" Aspect="AspectFill"  Source="https://www.clipartmax.com/png/middle/0-3509_book-clip-art-book-clip-art.png" HeightRequest="80" WidthRequest="80"  />
+                    <Label  HorizontalOptions="Center" Text="CartManager" TextColor="Gray" FontSize="18" FontAttributes="None" VerticalTextAlignment="Center" Margin="10"/>
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

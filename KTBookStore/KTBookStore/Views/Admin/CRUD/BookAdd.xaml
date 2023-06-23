@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="KTBookStore.Views.Book.BookAdd">
+    <ContentPage.Content>
+        <StackLayout Padding="15" VerticalOptions="CenterAndExpand">
+            <Label Text="Thêm tựa sách mới"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center"
+                  FontSize="Large"/>
+
+            <Entry x:Name="TxtName"
+                   Placeholder="Nhập tên sách"/>
+            
+            <Entry x:Name="TxtAuthor"
+                   Placeholder="Tác giả"
+                  />
+            
+            <Entry x:Name="TxtDesc"
+                   Placeholder="Mô tả sách"
+                  />
+            <Entry x:Name="TxtType"
+                   Placeholder="Thể loại"
+                  />
+            <Entry x:Name="TxtPrice"
+                   Placeholder="Giá sách"
+                  />
+
+            <Button Text="Save"
+                    x:Name="ButtonSave"
+                    CornerRadius="15"
+                    Clicked="ButtonSave_Clicked"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

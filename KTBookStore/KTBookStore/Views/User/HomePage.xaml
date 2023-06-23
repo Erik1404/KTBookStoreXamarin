@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            x:Class="KTBookStore.Views.User.HomePage">
+
+    <ContentPage.Content>
+        <StackLayout Spacing="0" HorizontalOptions="Center" VerticalOptions="Center" >
+            <!--Start Header-->
+            <StackLayout>
+                <Frame HasShadow="True" Margin="0,20" Padding="0" HeightRequest="60" HorizontalOptions="FillAndExpand">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Image HeightRequest="20" WidthRequest="20" Margin="20,0" Source="search.png"/>
+                        <Entry Grid.Column="1" Placeholder="Tên sách cần tìm" x:Name="TxtSearch" TextChanged="TxtSearch_TextChanged" TextColor="Black" FontSize="15" FontFamily="ThemeFontRegular" HorizontalOptions="FillAndExpand" VerticalOptions="Center"/>
+                        <ImageButton Grid.Column="2" HeightRequest="20" WidthRequest="20" Margin="20,0" Source="filter.png" Clicked="TxtSearch_SearchButtonPressed" />
+                    </Grid>
+                </Frame>
+            </StackLayout>
+            <!--Carousel-->
+            <StackLayout Padding="10">
+                <CarouselView x:Name="Carousel" HeightRequest="200">
+                    <CarouselView.ItemTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding Url}" Aspect="Fill"/>
+                        </DataTemplate>
+                    </CarouselView.ItemTemplate>
+                </CarouselView>
+            </StackLayout>
+            <ScrollView>
+                <StackLayout>
+                    <Label Text="KT Book Store Đọc Và Điểm Sách" FontSize="25" TextColor="Black"/>
+                    <!--ListViewItem-->
+                <ListView x:Name="BookListView" 
+                      ItemsSource="{Binding books}"
+                      HasUnevenRows="True"
+                      ItemTapped="BookListView_ItemTapped"                  
+                      IsRefreshing="True"
+                      IsPullToRefreshEnabled="True"
+                      GroupDisplayBinding="{Binding Key}"
+                      >
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Orientation="Horizontal" Padding="8">
+                                    <StackLayout Orientation="Horizontal">
+                                        <Image Source="{Binding Image}" WidthRequest="100"/>
+                                        <StackLayout VerticalOptions="Center" Padding="5">
+                                            <Label Text="{Binding BookName}" FontSize="Medium"  />
+                                            <Label Text="{Binding Author}" FontSize="Small"/>
+                                            <Label Text="{Binding Price, StringFormat='{0:C}'}" FontSize="Small"/>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                </StackLayout>
+               
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

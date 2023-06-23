@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="KTBookStore.Views.Login_Register.Register">
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RowSpacing="20" Padding="20,0,20,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+
+
+                <Path Grid.Row="0" Margin="-20,0" Data="m132.34,154.23002l209.00002,0l0,0.66666c-66.50001,28 -156.50001,72.87853 -209.00002,96.76573l0,-97.43239z"
+                      Stroke="#1C375C" Fill="#1C375C" HeightRequest="220" Aspect="Fill" ></Path>
+                <Image  Grid.Row="0" Margin="-18,-20,0,0" Source="logo.png" Aspect="AspectFit" HeightRequest="180" WidthRequest="150" VerticalOptions="Start" HorizontalOptions="Start" ></Image>
+                <Label Grid.Row="1"  Text="Đăng ký tài khoản" Margin="0,-50,0,0" FontSize="24" FontAttributes="Bold" TextColor="#1C375C" HorizontalOptions="CenterAndExpand"></Label>
+                <Entry Grid.Row="2" Placeholder="Tên của bạn" x:Name="TxtName" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"></Entry>
+                <Entry Grid.Row="3" Placeholder="Email" x:Name="TxtEmail" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"></Entry>
+                <Entry Grid.Row="4" Placeholder="Password" x:Name="TxtPassword" IsPassword="True" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"></Entry>
+                <Entry Grid.Row="5" Placeholder="Confirm Password" x:Name="TxtConfirmPass" IsPassword="True" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"></Entry>
+                <!--upload avarta user-->
+                <Image Grid.Row="6" x:Name="AvaUser" Source="addimg.png"
+                         HeightRequest="50"
+                         BackgroundColor="AliceBlue">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer x:Name="AvaUserTap"
+                                          Tapped="AvaUserTap_Tapped"/>
+                    </Image.GestureRecognizers>
+                </Image>
+                <Button Grid.Row="7" Text="Đăng ký" BackgroundColor="Firebrick" CornerRadius="20" x:Name="ButtonRegister" Clicked="ButtonRegister_Clicked"></Button>
+
+                <Label Grid.Row="8" Margin="0,-10,0,0" Text="Đã có tài khoản ? Đăng nhập ngay" TextColor="LimeGreen" HorizontalOptions="CenterAndExpand"></Label>
+
+                <Path Grid.Row="9" Margin="-20,0" Data="m333.5114,204.27502l115.48359,-59l-0.00813,123.08816c-101.06176,0.76114 -113.03789,-0.51177 -246.99185,-0.49297l131.51639,-63.59519z"
+                      Stroke="#1C375C" Fill="#1C375C" HeightRequest="143" Aspect="Fill" ></Path>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:st="clr-namespace:Plugin.SharedTransitions;assembly=Plugin.SharedTransitions" 
+             x:Class="KTBookStore.Views.Admin.BookList"
+             Title="Quản lý sản phẩm">
+
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="AddToolBarItem"
+                 Clicked="AddToolBarItem_Clicked">
+            <ToolbarItem.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource">
+                    <On Platform="Android" Value="add.png" />
+                </OnPlatform>
+            </ToolbarItem.Icon>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+
+    <Grid BackgroundColor="#F9F9F9" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <!--Start Header-->
+        <Frame HasShadow="True" Margin="0,20" Padding="0" HeightRequest="40" HorizontalOptions="FillAndExpand">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Image HeightRequest="20" WidthRequest="20" Margin="20,0" Source="search.png"/>
+                <Entry Grid.Column="1" Placeholder="Tên sách cần tìm" x:Name="TxtSearch" TextChanged="TxtSearch_TextChanged" TextColor="Black" FontSize="15" FontFamily="ThemeFontRegular" HorizontalOptions="FillAndExpand" VerticalOptions="Center"/>
+                <ImageButton Grid.Column="2" HeightRequest="20" WidthRequest="20" Margin="20,0" Source="filter.png" Clicked="TxtSearch_SearchButtonPressed" />
+            </Grid>
+        </Frame>
+        <!--End header-->
+        <!--Body Content-->
+        <ScrollView Grid.Row="2" Margin="0,10" VerticalScrollBarVisibility="Never" >
+            <ListView x:Name="BookListView" 
+                  ItemsSource="{Binding books}"
+                  HasUnevenRows="True"
+                  ItemTapped="BookListView_ItemTapped"                  
+                  IsRefreshing="True"
+                  IsPullToRefreshEnabled="True"
+                  BackgroundColor="Transparent"
+                  >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <pv:PancakeView HeightRequest="250" Margin="5,10" CornerRadius="5" BackgroundColor="LightSkyBlue">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="3*" />
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="auto" />
+                                    </Grid.RowDefinitions>
+                                    <Image HeightRequest="120" Aspect="AspectFill" Source="{Binding Image}"/>
+                                    <Image Source="bookmark.png" HorizontalOptions="End" Margin="12" HeightRequest="16" VerticalOptions="Start" />
+                                    <StackLayout Grid.Row="1" Spacing="5" Margin="20,5">
+                                        <Label Text="{Binding BookName}" LineBreakMode="TailTruncation" FontSize="Medium" FontFamily="ThemeFontBold" TextColor="Chocolate" />
+                                        <StackLayout Grid.Row="1" Spacing="5" Margin="20,5">
+                                            <!--<Label Text="{Binding Price}" FontSize="15" FontFamily="ThemeFontBold" TextColor="#515151"/>-->
+                                            <StackLayout Orientation="Horizontal" Spacing="15">
+                                                <StackLayout Orientation="Horizontal" Spacing="10">
+                                                    <Image WidthRequest="16" Source="author.png"/>
+                                                    <Label Text="{Binding Author}" FontSize="12" FontFamily="ThemeFontRegular" TextColor="#707070"/>
+                                                </StackLayout>
+                                                <StackLayout Orientation="Horizontal" Spacing="10">
+                                                    <Image WidthRequest="16" Source="type.png"/>
+                                                    <Label Text="{Binding Type}" FontSize="12" FontFamily="ThemeFontRegular" TextColor="#707070"/>
+                                                </StackLayout>
+                                                <StackLayout Orientation="Horizontal" Spacing="10">
+                                                    <Image WidthRequest="16" Source="price.png"/>
+                                                    <Label Text="{Binding Price}" FontSize="12" FontFamily="ThemeFontRegular" TextColor="#707070"/>
+                                                </StackLayout>
+                                            </StackLayout>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </Grid>
+                            </pv:PancakeView>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </ScrollView>
+    </Grid>
+
+</ContentPage>

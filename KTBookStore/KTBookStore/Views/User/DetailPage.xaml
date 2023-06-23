@@ -1,0 +1,185 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xyt="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             x:Class="KTBookStore.Views.User.DetailPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ControlTemplate x:Key="CustomTab">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="3*"/>
+                    </Grid.ColumnDefinitions>
+
+
+                    <Label Text="{TemplateBinding Text}"  HorizontalOptions="CenterAndExpand"  
+                           VerticalOptions="CenterAndExpand" Grid.Row="0" TextColor="{TemplateBinding CurrentTextColor}"/>
+                    <BoxView Color="Orange" HeightRequest="10" WidthRequest="10"  Grid.Row="1"
+                             HorizontalOptions="CenterAndExpand"  VerticalOptions="CenterAndExpand"
+                             CornerRadius="30"  IsVisible="{TemplateBinding IsSelected}"/>
+
+                </Grid>
+            </ControlTemplate>
+            <Style
+		        x:Key="CustomTabStyle"
+		        TargetType="xyt:TabView">
+                <Setter
+			        Property="IsTabTransitionEnabled"
+			        Value="True" />
+                <Setter
+			        Property="TabStripHeight"
+			        Value="48" />
+                <Setter
+			        Property="TabContentBackgroundColor"
+			        Value="#484848" />
+                <Setter
+			        Property="TabStripPlacement"
+			        Value="Top" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid>
+                <StackLayout VerticalOptions="FillAndExpand">
+                    <!--Image Detail-->
+                    <Grid>
+                        <Frame Padding="0" HeightRequest="200" BackgroundColor="Black">
+                            <Image  Source="{Binding Image}" Opacity="0.8"  Aspect="AspectFill"/>
+                        </Frame>
+                        <StackLayout VerticalOptions="EndAndExpand" Margin="15,15,15,85">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="3*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Text="{Binding Name}" Grid.Column="0" TextColor="Black" FontSize="28" FontAttributes="None"/>
+                            </Grid>
+
+                        </StackLayout>
+                    </Grid>
+                    <!--Image Detail-->
+                  
+                    <!--Information-->
+                    <Grid  VerticalOptions="FillAndExpand" Margin="0,-30,0,0" Padding="0">
+                        <Frame CornerRadius="25">
+
+                            <Grid>
+                                <xyt:TabView Style="{StaticResource CustomTabStyle}">
+                                    <xyt:TabViewItem 
+                                    ControlTemplate="{StaticResource CustomTab}" x:Name="userEmailLBL"
+                                    Text="Tổng quan" TextColorSelected="Orange"
+                                    >
+
+                                        <StackLayout BackgroundColor="White">
+                                            <Grid BackgroundColor="White">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <!--<ColumnDefinition Width="*"/>-->
+                                                </Grid.ColumnDefinitions>
+
+
+                                                <StackLayout Grid.Column="0" HeightRequest="65" 
+                                                     VerticalOptions="Start" 
+                                                     >
+
+                                                    <Grid BackgroundColor="White">
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*"/>
+                                                            <ColumnDefinition Width="*"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="*"/>
+                                                            <RowDefinition Height="*"/>
+                                                        </Grid.RowDefinitions>
+
+                                                        <StackLayout Grid.Column="0" Grid.RowSpan="2" HeightRequest="100" 
+                                                     VerticalOptions="Start" 
+                                                    >
+                                                            <Image Source="price.png" Aspect="AspectFit" HeightRequest="40"
+                                                           VerticalOptions="CenterAndExpand"/>
+                                                        </StackLayout>
+
+                                                        <StackLayout Grid.Column="1" HeightRequest="100" 
+                                                     VerticalOptions="Start" 
+                                                     >
+                                                            <Label Text="Giá" VerticalOptions="EndAndExpand" TextColor="DarkGray"
+                                                           FontAttributes="Bold"/>
+                                                        </StackLayout>
+                                                        <StackLayout Grid.Row="1" Grid.Column="1" HeightRequest="100" 
+                                                     VerticalOptions="Start" 
+                                                     >
+                                                            <StackLayout Orientation="Horizontal">
+                                                                <Label Text="{Binding Price , StringFormat='{0:C}'} "   VerticalOptions="EndAndExpand" FontSize="21" TextColor="Black"
+                                                           FontAttributes="Bold"/>
+                                                            </StackLayout>
+                                                        </StackLayout>
+                                                    </Grid>
+                                                </StackLayout>
+                                            </Grid>
+                                            <ScrollView>
+                                                <StackLayout >
+                                                    <Label FontSize="16" TextColor="Blue"  FontAttributes="Bold" >
+                                                        <Label.FormattedText >
+                                                            <FormattedString >
+                                                                <Span Text="Tác giả: " ></Span>
+                                                                <Span Text="{Binding Author}" ></Span>
+                                                            </FormattedString>
+                                                        </Label.FormattedText>
+                                                    </Label>
+
+                                                    <Label Text="{Binding Desc}"
+                                                            TextColor="Black" FontSize="16" />
+                                                </StackLayout>
+                                            </ScrollView>
+                                        </StackLayout>
+                                    </xyt:TabViewItem>
+                                    <xyt:TabViewItem
+                                    ControlTemplate="{StaticResource CustomTab}"
+                                    Text="Đánh giá" TextColorSelected="Orange"
+                                    >
+                                        <Grid BackgroundColor="Blue">
+                                        </Grid>
+                                    </xyt:TabViewItem>
+                                </xyt:TabView>
+                            </Grid>
+                        </Frame>
+                        <pancake:PancakeView CornerRadius="50" BackgroundColor="White"  Margin="15,-45,20,15" HeightRequest="80" WidthRequest="80" Padding="5" 
+                           HorizontalOptions="EndAndExpand" 
+                           VerticalOptions="Start">
+                            <pancake:PancakeView.Shadow>
+                                <pancake:DropShadow Color="Black" BlurRadius="15" Offset="0,0"/>
+                            </pancake:PancakeView.Shadow>
+                            <Image Source="save.png" Aspect="AspectFit" Margin="15"/>
+                        </pancake:PancakeView>
+                    </Grid>
+                    <!--Information-->
+
+                    <Grid>
+                        <!--Footer start-->
+                        <pancake:PancakeView Grid.Row="3" HeightRequest="50" >
+                            <pancake:PancakeView.BackgroundGradientStops>
+                                <pancake:GradientStopCollection>
+                                    <pancake:GradientStop Color="#FF4157" Offset="0" />
+                                    <pancake:GradientStop Color="#FF4359" Offset="0.5" />
+                                    <pancake:GradientStop Color="#FE93C5" Offset="1" />
+                                </pancake:GradientStopCollection>
+                            </pancake:PancakeView.BackgroundGradientStops>
+
+                            <Button Text="Mua ngay" TextColor="White" FontSize="15" FontFamily="ThemeFontBold" VerticalOptions="Center" Clicked="AddToCart_Clicked" CommandParameter="{Binding ProductId}"/>
+                        </pancake:PancakeView>
+                        <!--Footer end-->
+                    </Grid>
+                </StackLayout>
+            </Grid>
+        </ScrollView>
+
+
+    </ContentPage.Content>
+</ContentPage>
