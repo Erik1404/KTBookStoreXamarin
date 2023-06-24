@@ -1,6 +1,4 @@
-﻿using KTBookStore.Models;
-using KTBookStore.Services;
-using KTBookStore.Views.Login_Register;
+﻿using KTBookStore.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,21 +9,20 @@ using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-
-
 namespace KTBookStore.Views.User
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class AccountPage : ContentPage
 
+    public partial class AccountInfoPage : ContentPage
     {
         UserRepository userRepository = new UserRepository();
         string emailuser = Preferences.Get("userEmail", "default");
-        public AccountPage()
+
+        public AccountInfoPage()
         {
             InitializeComponent();
-            LoadUser(emailuser);
 
+            LoadUser(emailuser);
         }
         private async void LoadUser(string email)
         {
@@ -33,13 +30,10 @@ namespace KTBookStore.Views.User
             var userManager = await userRepository.GetUserByEmail(email);
             if (userManager != null)
             {
+                _userEmail.Text = userManager.Email;
                 _userName.Text = userManager.UserName;
+                _userImg.Source = userManager.Image;
             }
-        }
-
-        private void AccountInfoPage_Clicked(object sender, EventArgs e)
-        {
-            Navigation.PushAsync(new AccountInfoPage());
         }
     }
 }

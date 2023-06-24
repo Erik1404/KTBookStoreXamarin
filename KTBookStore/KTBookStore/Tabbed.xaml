@@ -5,14 +5,13 @@
             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
             android:TabbedPage.ToolbarPlacement="Bottom"
             x:Class="KTBookStore.Tabbed"
-            BarBackground="Orange"
-            BarTextColor="White"
-            SelectedTabColor="Black"
-            UnselectedTabColor="Pink"
+            BarBackground="White"
+            BarTextColor="Black"
+            SelectedTabColor="Orange"
             >
   <!--Pages can be added as references or inline-->
-    <local:HomePage  IconImageSource="home.png" />
-    <local:AccountPage IconImageSource="user.png"/>
-    <local:CartPage IconImageSource="user.png"/>
+    <local:HomePage Title="Home" IconImageSource="home.png" />
+    <local:AccountPage Title="Tôi" IconImageSource="user.png"/>
+    <local:CartPage Title="Đơn hàng" IconImageSource="cart.jpg"/>
 
 </TabbedPage>
