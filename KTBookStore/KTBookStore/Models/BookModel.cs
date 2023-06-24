@@ -12,6 +12,7 @@ namespace KTBookStore.Models
         public string Desc { get; set; }
         public string Type { get; set; }
         public int Price { get; set; }
+        public int Quantity { get; set; }
         public string Image { get; set; }
 
     }

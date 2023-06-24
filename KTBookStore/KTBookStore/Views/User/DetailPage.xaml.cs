@@ -48,6 +48,7 @@ namespace KTBookStore.Views.User
         {
             var button = (Button)sender;
             var book = button.BindingContext as BookModel;
+            var idbook = book.IdBook;
 
             CartItem cartItem = new CartItem
             {
@@ -65,7 +66,8 @@ namespace KTBookStore.Views.User
             }
             if (!string.IsNullOrEmpty(_UserId))
             {
-                await cartItemRepository.AddCartItem(_UserId, cartItem);
+                await cartItemRepository.AddToCart(_UserId, idbook, cartItem);
+
                 await DisplayAlert("Thông báo", "Sản phẩm đã được thêm vào giỏ hàng", "OK");
             }
         }
