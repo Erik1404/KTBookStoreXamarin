@@ -14,16 +14,16 @@ using Xamarin.Forms.Xaml;
 
 namespace KTBookStore.Views.User
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
+    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DetailPage : ContentPage
-	{
+    {
 
         UserRepository userRepository = new UserRepository();
         CartItemRepository cartItemRepository = new CartItemRepository();
         private string _userEmail;
         private string _UserId;
-        public DetailPage (BookModel book, string userEmail)
-		{
+        public DetailPage(BookModel book, string userEmail)
+        {
             InitializeComponent();
             BindingContext = book;
             _userEmail = userEmail;
@@ -56,7 +56,7 @@ namespace KTBookStore.Views.User
                 Price = book.Price,
                 Image = book.Image,
             };
-           
+
 
             var userManager = await userRepository.GetUserByEmail(_userEmail);
             if (userManager != null)
@@ -64,10 +64,10 @@ namespace KTBookStore.Views.User
                 _UserId = userManager.UserId;
             }
             if (!string.IsNullOrEmpty(_UserId))
-                {
-                    await cartItemRepository.AddCartItem(_UserId, cartItem);
-                    await DisplayAlert("Thông báo", "Sản phẩm đã được thêm vào giỏ hàng", "OK");
-                }
+            {
+                await cartItemRepository.AddCartItem(_UserId, cartItem);
+                await DisplayAlert("Thông báo", "Sản phẩm đã được thêm vào giỏ hàng", "OK");
             }
         }
+    }
 }
