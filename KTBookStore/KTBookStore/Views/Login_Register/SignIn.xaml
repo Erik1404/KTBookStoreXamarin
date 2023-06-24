@@ -27,8 +27,12 @@
                     
                     <Label Grid.Row="0"  Text="Xin chào bạn" FontSize="24" FontAttributes="Bold" TextColor="#1C375C" HorizontalOptions="CenterAndExpand"></Label>
                     <Label Grid.Row="1" Margin="0,-15,0,0" Text="Đăng nhập tài khoản" TextColor="#1C375C"  HorizontalOptions="CenterAndExpand"></Label>
-                    <Entry Grid.Row="2" Placeholder="Email" x:Name="TxtEmail" Margin="0,20,0,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"></Entry>
-                    <Entry Grid.Row="3" Placeholder="Mật khẩu" x:Name="TxtPassword" IsPassword="True" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"></Entry>
+                    <!--<Entry Grid.Row="2" Placeholder="Email" x:Name="TxtEmail" Margin="0,20,0,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"></Entry>
+                    <Entry Grid.Row="3" Placeholder="Mật khẩu" x:Name="TxtPassword" IsPassword="True" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"></Entry>-->
+
+                    <Entry Grid.Row="2" Placeholder="Email" Text="Tri@gmail.com" x:Name="TxtEmail" Margin="0,20,0,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"></Entry>
+                    <Entry Grid.Row="3" Placeholder="Mật khẩu" Text="123456"  x:Name="TxtPassword" IsPassword="True" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"></Entry>
+
                     <Button Grid.Row="4" Text="Đăng nhập" BackgroundColor="Cyan" CornerRadius="20" Clicked="BtnSignIn_Clicked"></Button>
                     <Label Grid.Row="5" Text="Hoặc đăng nhập với " HorizontalOptions="CenterAndExpand"></Label>
                     <StackLayout Grid.Row="6" Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="40">

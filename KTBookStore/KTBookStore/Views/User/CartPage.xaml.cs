@@ -13,9 +13,9 @@ using Xamarin.Forms.Xaml;
 namespace KTBookStore.Views.User
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class Page1 : ContentPage
+	public partial class CartPage : ContentPage
 	{
-        public Page1 ()
+        public CartPage()
 		{
 			InitializeComponent ();
 		}

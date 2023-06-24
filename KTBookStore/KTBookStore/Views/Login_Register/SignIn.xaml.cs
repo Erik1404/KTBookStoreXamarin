@@ -70,7 +70,7 @@ namespace KTBookStore.Views.Login_Register
                     }
                     else
                     {
-                        await Navigation.PushAsync(new HomePage());
+                        await Navigation.PushAsync(new Tabbed());
                     } 
                 }
                 else

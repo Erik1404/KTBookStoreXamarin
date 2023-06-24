@@ -12,6 +12,7 @@
             >
   <!--Pages can be added as references or inline-->
     <local:HomePage  IconImageSource="home.png" />
-    <local:Page1 IconImageSource="user.png"/>
+    <local:AccountPage IconImageSource="user.png"/>
+    <local:CartPage IconImageSource="user.png"/>
 
 </TabbedPage>

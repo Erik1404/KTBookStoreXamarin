@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="KTBookStore.Views.User.CartPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Xác nhận đơn hàng"/>
+            <StackLayout>
+                <Image Source="location.png" />
+                <Label Text="Địa chỉ giao hàng" />
+            </StackLayout>
+            <Label Text="Xác nhận đơn hàng"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
