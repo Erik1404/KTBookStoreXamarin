@@ -48,7 +48,7 @@
         <ScrollView>
             <Grid>
                 <StackLayout VerticalOptions="FillAndExpand">
-                    <!--Image Detail-->
+                    <!--Image Detail Begin-->
                     <Grid>
                         <Frame Padding="0" HeightRequest="200" BackgroundColor="Black">
                             <Image  Source="{Binding Image}" Opacity="0.8"  Aspect="AspectFill"/>
@@ -61,34 +61,31 @@
                                 </Grid.ColumnDefinitions>
                                 <Label Text="{Binding Name}" Grid.Column="0" TextColor="Black" FontSize="28" FontAttributes="None"/>
                             </Grid>
-
                         </StackLayout>
                     </Grid>
-                    <!--Image Detail-->
-                  
-                    <!--Information-->
+                    <!--Image Detail End-->
+
+                    <!--Information Begin-->
                     <Grid  VerticalOptions="FillAndExpand" Margin="0,-30,0,0" Padding="0">
                         <Frame CornerRadius="25">
 
                             <Grid>
                                 <xyt:TabView Style="{StaticResource CustomTabStyle}">
+
+                                    <!--Tab Tổng quan Begin-->
                                     <xyt:TabViewItem 
-                                    ControlTemplate="{StaticResource CustomTab}" x:Name="userEmailLBL"
+                                    ControlTemplate="{StaticResource CustomTab}" 
                                     Text="Tổng quan" TextColorSelected="Orange"
                                     >
-
                                         <StackLayout BackgroundColor="White">
                                             <Grid BackgroundColor="White">
                                                 <Grid.ColumnDefinitions>
                                                     <ColumnDefinition Width="*"/>
                                                     <!--<ColumnDefinition Width="*"/>-->
                                                 </Grid.ColumnDefinitions>
-
-
                                                 <StackLayout Grid.Column="0" HeightRequest="65" 
                                                      VerticalOptions="Start" 
                                                      >
-
                                                     <Grid BackgroundColor="White">
                                                         <Grid.ColumnDefinitions>
                                                             <ColumnDefinition Width="*"/>
@@ -98,7 +95,6 @@
                                                             <RowDefinition Height="*"/>
                                                             <RowDefinition Height="*"/>
                                                         </Grid.RowDefinitions>
-
                                                         <StackLayout Grid.Column="0" Grid.RowSpan="2" HeightRequest="100" 
                                                      VerticalOptions="Start" 
                                                     >
@@ -125,21 +121,33 @@
                                             </Grid>
                                             <ScrollView>
                                                 <StackLayout >
-                                                    <Label FontSize="16" TextColor="Blue"  FontAttributes="Bold" >
+                                                    <Label Text="{Binding BookName}" FontSize="16" TextColor="Black" FontAttributes="Bold"/>
+                                                    <Label FontSize="16"   FontAttributes="Bold" >
                                                         <Label.FormattedText >
                                                             <FormattedString >
                                                                 <Span Text="Tác giả: " ></Span>
-                                                                <Span Text="{Binding Author}" ></Span>
+                                                                <Span Text="{Binding Author}" TextColor="Blue"  ></Span>
                                                             </FormattedString>
                                                         </Label.FormattedText>
                                                     </Label>
-
+                                                    <Label FontSize="16"  FontAttributes="Bold" >
+                                                        <Label.FormattedText >
+                                                            <FormattedString >
+                                                                <Span Text="Thể loại: " ></Span>
+                                                                <Span Text="{Binding Type}" TextColor="Blue"  ></Span>
+                                                            </FormattedString>
+                                                        </Label.FormattedText>
+                                                    </Label>
+                                                    <Label Text="Mô tả" TextColor="Black" FontSize="16"/>
                                                     <Label Text="{Binding Desc}"
                                                             TextColor="Black" FontSize="16" />
                                                 </StackLayout>
                                             </ScrollView>
                                         </StackLayout>
                                     </xyt:TabViewItem>
+                                    <!--Tab Tổng quan End-->
+
+                                    <!--Tab Đánh giá Begin-->
                                     <xyt:TabViewItem
                                     ControlTemplate="{StaticResource CustomTab}"
                                     Text="Đánh giá" TextColorSelected="Orange"
@@ -147,22 +155,65 @@
                                         <Grid BackgroundColor="Blue">
                                         </Grid>
                                     </xyt:TabViewItem>
+                                    <!--Tab Đánh giá End-->
+                                    <!--Tab Đặt hàng Begin-->
+                                    <xyt:TabViewItem
+                                    ControlTemplate="{StaticResource CustomTab}"
+                                    Text="Đặt hàng" TextColorSelected="Orange"
+                                    >
+                                        <StackLayout BackgroundColor="White">
+                                            <ScrollView>
+                                                <StackLayout >
+                                                    <Label FontSize="16"  >
+                                                        <Label.FormattedText >
+                                                            <FormattedString >
+                                                                <Span Text="Tình trạng: " ></Span>
+                                                                <Span Text="Còn hàng" TextTransform="Uppercase" TextColor="Blue" ></Span>
+                                                            </FormattedString>
+                                                        </Label.FormattedText>
+                                                    </Label>
+                                                    <StackLayout Orientation="Horizontal" VerticalOptions="Center" >
+                                                        <Label Text="Số lượng" FontSize="16" Margin="0,10"/>
+                                                        <Stepper Maximum="100"
+                                                            Increment="1"
+                                                            HorizontalOptions="Start"
+                                                            ValueChanged="OnStepperValueChanged" />
+                                                        <Label x:Name="_displayLabel"
+                                                           Text="0"
+                                                           HorizontalOptions="Center"
+                                                           VerticalOptions="CenterAndExpand" />
+                                                    </StackLayout>
+                                                    <Button  Text="Mua ngay"  BackgroundColor="Blue" TextColor="White" FontSize="15" FontFamily="ThemeFontBold" 
+                                                            VerticalOptions="Center" Clicked="AddToCart_Clicked" CommandParameter="{Binding ProductId}"/>
+
+                                                </StackLayout>
+                                            </ScrollView>
+                                        </StackLayout>
+                                    </xyt:TabViewItem>
+                                    <!--Tab Đặt hàng End-->
                                 </xyt:TabView>
                             </Grid>
+
                         </Frame>
-                        <pancake:PancakeView CornerRadius="50" BackgroundColor="White"  Margin="15,-45,20,15" HeightRequest="80" WidthRequest="80" Padding="5" 
+
+                        <!--Icon add favorite Begin-->
+                        <!--<pancake:PancakeView CornerRadius="50" BackgroundColor="White"  Margin="15,-45,20,15" HeightRequest="80" WidthRequest="80" Padding="5" 
                            HorizontalOptions="EndAndExpand" 
                            VerticalOptions="Start">
                             <pancake:PancakeView.Shadow>
                                 <pancake:DropShadow Color="Black" BlurRadius="15" Offset="0,0"/>
                             </pancake:PancakeView.Shadow>
                             <Image Source="save.png" Aspect="AspectFit" Margin="15"/>
-                        </pancake:PancakeView>
-                    </Grid>
-                    <!--Information-->
+                        </pancake:PancakeView>-->
+                        <!--Icon add favorite End-->
 
-                    <Grid>
-                        <!--Footer start-->
+                    </Grid>
+                    <!--Information End-->
+
+                    <!--<Grid>
+                        -->
+                    <!--Footer start-->
+                    <!--
                         <pancake:PancakeView Grid.Row="3" HeightRequest="50" >
                             <pancake:PancakeView.BackgroundGradientStops>
                                 <pancake:GradientStopCollection>
@@ -174,12 +225,12 @@
 
                             <Button Text="Mua ngay" TextColor="White" FontSize="15" FontFamily="ThemeFontBold" VerticalOptions="Center" Clicked="AddToCart_Clicked" CommandParameter="{Binding ProductId}"/>
                         </pancake:PancakeView>
-                        <!--Footer end-->
-                    </Grid>
+                        -->
+                    <!--Footer end-->
+                    <!--
+                    </Grid>-->
                 </StackLayout>
             </Grid>
         </ScrollView>
-
-
     </ContentPage.Content>
 </ContentPage>

@@ -5,7 +5,7 @@
 
     <ContentPage.Content>
         <StackLayout Spacing="0" HorizontalOptions="Center" VerticalOptions="Center" >
-            <!--Start Header-->
+            <!--Start Header Begin-->
             <StackLayout>
                 <Frame HasShadow="True" Margin="0,20" Padding="0" HeightRequest="60" HorizontalOptions="FillAndExpand">
                     <Grid>
@@ -20,7 +20,9 @@
                     </Grid>
                 </Frame>
             </StackLayout>
-            <!--Carousel-->
+            <!--Start Header End-->
+
+            <!--Carousel Begin-->
             <StackLayout Padding="10">
                 <CarouselView x:Name="Carousel" HeightRequest="200">
                     <CarouselView.ItemTemplate>
@@ -30,38 +32,37 @@
                     </CarouselView.ItemTemplate>
                 </CarouselView>
             </StackLayout>
-            <ScrollView>
-                <StackLayout>
-                    <Label Text="KT Book Store Đọc Và Điểm Sách" FontSize="25" TextColor="Black"/>
-                    <!--ListViewItem-->
-                <ListView x:Name="BookListView" 
-                      ItemsSource="{Binding books}"
+            <!--Carousel End-->
+
+            <!--ListViewItem Begin-->
+            <ListView x:Name="BookListView" 
+                      ItemsSource="{Binding BookGroups}"
                       HasUnevenRows="True"
                       ItemTapped="BookListView_ItemTapped"                  
                       IsRefreshing="True"
                       IsPullToRefreshEnabled="True"
                       GroupDisplayBinding="{Binding Key}"
+                      IsGroupingEnabled="True"
                       >
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <StackLayout Orientation="Horizontal" Padding="8">
-                                    <StackLayout Orientation="Horizontal">
-                                        <Image Source="{Binding Image}" WidthRequest="100"/>
-                                        <StackLayout VerticalOptions="Center" Padding="5">
-                                            <Label Text="{Binding BookName}" FontSize="Medium"  />
-                                            <Label Text="{Binding Author}" FontSize="Small"/>
-                                            <Label Text="{Binding Price, StringFormat='{0:C}'}" FontSize="Small"/>
-                                        </StackLayout>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" Padding="8">
+                                <StackLayout Orientation="Horizontal">
+                                    <Image Source="{Binding Image}" WidthRequest="100" HeightRequest="100" Aspect="AspectFit"/>
+                                    <StackLayout VerticalOptions="Center" Padding="5">
+                                        <Label Text="{Binding BookName}" FontSize="Medium"  />
+                                        <Label Text="{Binding Author}" FontSize="Small"/>
+                                        <Label Text="{Binding Price, StringFormat='{0:C}'}" FontSize="Small"/>
                                     </StackLayout>
                                 </StackLayout>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-                </StackLayout>
-               
-            </ScrollView>
+                            </StackLayout>
+
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <!--ListViewItem End-->
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

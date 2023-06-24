@@ -2,6 +2,8 @@
 using KTBookStore.Models;
 using System;
 using System.Collections.Generic;
+using Xamarin.CommunityToolkit.ObjectModel;
+
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,7 +19,8 @@ namespace KTBookStore.Views.User
 	public partial class HomePage : ContentPage
     {
         BookRepository bookRepository = new BookRepository();
-
+        public ObservableRangeCollection<BookModel> Book { get; set; }
+        public ObservableRangeCollection<Grouping<string, BookModel>> BookGroups { get; }
         public HomePage ()
 		{
 			InitializeComponent ();
@@ -42,16 +45,38 @@ namespace KTBookStore.Views.User
             }));
             //Carousel - End
 
+            Book = new ObservableRangeCollection<BookModel>();
+            BookGroups = new ObservableRangeCollection<Grouping<string, BookModel>>();
         }
 
         protected override async void OnAppearing()
         {
-            var books = await bookRepository.GetAll();
-            BookListView.ItemsSource = null;
-            BookListView.ItemsSource = books;
-            BookListView.IsRefreshing = false;
-
+            Load();
+            BookGroups.Count();
         }
+        private async void Load()
+        {
+            var books = await bookRepository.GetAll();
+
+            var typeBook = from b in books
+                           orderby b.Type
+                           group b by b.Type into grp
+                           select new { count = grp.Count() };
+
+            int countType = typeBook.Count();
+
+            if (BookGroups.Count != countType)
+            {
+                for (int i = 0; i < countType; i++)
+                {
+                    var book = books[i];
+                    BookGroups.Add(new Grouping<string, BookModel>(book.Type, books.Where(c => c.Type == book.Type)));
+                }
+            }
+            BookListView.ItemsSource = BookGroups;
+            BookListView.IsRefreshing = false;
+        }
+
         private void BookListView_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             if (e.Item == null)

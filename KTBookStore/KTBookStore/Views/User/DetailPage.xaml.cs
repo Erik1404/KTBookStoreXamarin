@@ -1,11 +1,13 @@
 ﻿using Firebase.Auth;
 using KTBookStore.Models;
 using KTBookStore.Services;
+using KTBookStore.Views.Login_Register;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -13,8 +15,9 @@ using Xamarin.Forms.Xaml;
 namespace KTBookStore.Views.User
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class DetailPage : ContentPage
+    public partial class DetailPage : ContentPage
 	{
+
         UserRepository userRepository = new UserRepository();
         CartItemRepository cartItemRepository = new CartItemRepository();
         private string _userEmail;
@@ -33,10 +36,14 @@ namespace KTBookStore.Views.User
             if (userManager != null)
             {
                 _UserId = userManager.UserId;
-                userEmailLBL.Text = _UserId;
+                //userEmailLBL.Text = _UserId;
             }
         }
-
+        void OnStepperValueChanged(object sender, ValueChangedEventArgs e)
+        {
+            double value = e.NewValue;
+            _displayLabel.Text = string.Format("{0}", value);
+        }
         private async void AddToCart_Clicked(object sender, EventArgs e)
         {
             var button = (Button)sender;
