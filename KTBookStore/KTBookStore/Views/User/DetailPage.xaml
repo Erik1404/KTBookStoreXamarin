@@ -152,10 +152,43 @@
                                     ControlTemplate="{StaticResource CustomTab}"
                                     Text="Đánh giá" TextColorSelected="Orange"
                                     >
-                                        <Grid BackgroundColor="Blue">
-                                        </Grid>
+                                        <StackLayout  BackgroundColor="White">
+                                            <!--<ScrollView HeightRequest="200">
+                                                <StackLayout>
+                                                    <ListView>
+                                                        <ListView.ItemTemplate>
+                                                            <DataTemplate>
+                                                                <ViewCell>
+                                                                    <StackLayout Orientation="Horizontal" Padding="8">
+                                                                        <StackLayout Orientation="Horizontal">
+                                                                            <StackLayout VerticalOptions="Center" Padding="5">
+                                                                                <Label Text="UserName" FontSize="Medium"  />
+                                                                                <Label Text="Mon hang nay sieu dep" FontSize="Small"/>
+                                                                            </StackLayout>
+                                                                        </StackLayout>
+                                                                    </StackLayout>
+                                                                </ViewCell>
+                                                            </DataTemplate>
+                                                        </ListView.ItemTemplate>
+                                                    </ListView>
+                                                   
+                                                </StackLayout>
+                                            </ScrollView>
+                                            
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <Entry x:Name="EntryMessage" Grid.Row="7" Grid.Column="1" Placeholder="Nhập bình luận" TextColor="Black" 
+                                                   FontSize="15" FontFamily="ThemeFontRegular" HorizontalOptions="FillAndExpand" VerticalOptions="Center"/>
+                                                <ImageButton Clicked="ButtonSend_Clicked" Grid.Row="7" HeightRequest="20" WidthRequest="20" Margin="20,0" Source="send.png"/>
+                                            </Grid>-->
+                                        </StackLayout>
                                     </xyt:TabViewItem>
                                     <!--Tab Đánh giá End-->
+
                                     <!--Tab Đặt hàng Begin-->
                                     <xyt:TabViewItem
                                     ControlTemplate="{StaticResource CustomTab}"

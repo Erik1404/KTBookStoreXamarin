@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using System.Xml.Linq;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -17,11 +18,12 @@ namespace KTBookStore.Views.User
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DetailPage : ContentPage
     {
-
+        BookRepository bookRepository = new BookRepository();
         UserRepository userRepository = new UserRepository();
         CartItemRepository cartItemRepository = new CartItemRepository();
         private string _userEmail;
         private string _UserId;
+        //Comment
         public DetailPage(BookModel book, string userEmail)
         {
             InitializeComponent();
@@ -69,5 +71,6 @@ namespace KTBookStore.Views.User
                 await DisplayAlert("Thông báo", "Sản phẩm đã được thêm vào giỏ hàng", "OK");
             }
         }
+        
     }
 }
