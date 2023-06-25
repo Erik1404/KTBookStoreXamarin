@@ -51,13 +51,13 @@ namespace KTBookStore.Views.User
             var button = (Button)sender;
             var book = button.BindingContext as BookModel;
             var idbook = book.IdBook;
-
             CartItem cartItem = new CartItem
             {
                 BookId = book.IdBook,
                 BookName = book.BookName,
                 Price = book.Price,
                 Image = book.Image,
+
             };
 
 

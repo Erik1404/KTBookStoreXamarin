@@ -26,38 +26,38 @@
 
                 
                 <!--List Cart Begin-->
-
                 <StackLayout>
                     <!--ITEM CART CHOOSE-->
-                    <Frame HasShadow="True" Margin="0,20" Padding="0" HeightRequest="200" HorizontalOptions="FillAndExpand">
+                    <Frame HasShadow="True" Margin="0,20" Padding="0" HeightRequest="220" HorizontalOptions="FillAndExpand">
                         <Grid Margin="5">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"/>
                                 <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
-                            <ListView Grid.Column="1" x:Name="UserListView">
-                                <ListView.ItemTemplate>
-                                    <DataTemplate>
-                                        <ViewCell>
-                                            <Grid>
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="Auto"/>
-                                                    <ColumnDefinition Width="*"/>
-                                                    <ColumnDefinition Width="Auto"/>
-                                                </Grid.ColumnDefinitions>
-                                                <Image Grid.Column="0" WidthRequest="50" HeightRequest="50" Source="{Binding Image}"/>
-                                                <Label Grid.Column="1" VerticalOptions="Center" TextColor="Black" FontSize="13" TextTransform="Uppercase" Text="{Binding BookName}"/>
-                                                <Label Grid.Column="2" VerticalOptions="Center" HorizontalOptions="End" TextColor="Gray" FontSize="13" TextTransform="Uppercase" Text="{Binding Price}"/>
-                                            </Grid>
-                                        </ViewCell>
-                                    </DataTemplate>
-                                </ListView.ItemTemplate>
-                            </ListView>
+                            <ScrollView >
+                                <ListView x:Name="UserListView" >
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <ViewCell>
+                                                <Grid Margin="5">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="Auto"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="Auto"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Image Grid.Column="0" WidthRequest="50" HeightRequest="50" Source="{Binding Image}"/>
+                                                    <Label Grid.Column="1" VerticalOptions="Center" TextColor="Black" FontSize="13" TextTransform="Uppercase" Text="{Binding BookName}"/>
+                                                    <Label Grid.Column="2" VerticalOptions="Center" HorizontalOptions="End" TextColor="Gray" FontSize="13" TextTransform="Uppercase" Text="{Binding Price,StringFormat='{0:C}'}"/>
+                                                </Grid>
+                                            </ViewCell>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                            </ScrollView>
+                           
                         </Grid>
                     </Frame>
                     <!--ITEM CART CHOOSE-->
-
+                    
                     <Frame BackgroundColor="Transparent" Margin="0,20" Padding="0" HeightRequest="80" HorizontalOptions="FillAndExpand">
                         <Grid Margin="5">
                             <Grid.ColumnDefinitions>
@@ -68,10 +68,11 @@
                                 <RowDefinition  Height="Auto" />
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
-                                
+
                             </Grid.RowDefinitions>
                             <Label  Grid.Row="1" Grid.Column="1" VerticalOptions="Center"  TextColor="Black" FontSize="13"  Text="Tổng tiền "/>
-                            <Label   Grid.Row="1" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="End"  TextColor="Gray" FontSize="13" x:Name="TotalAmountLabel"/>
+                            <Label   Grid.Row="1" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="End"  
+                                     TextColor="Gray" FontSize="13" x:Name="TotalAmountLabel"  />
                             <Label Grid.Row="2" Grid.Column="1" VerticalOptions="Center"  TextColor="Black" FontSize="13"  Text="Phí giao hàng"/>
                             <Label Grid.Row="2" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="End"  TextColor="Gray" FontSize="13" Text="15.000đ"/>
                             <Label Grid.Row="3" Grid.Column="1" VerticalOptions="Center"  TextColor="Black" FontSize="13"  Text="Tổng cộng"/>
@@ -80,7 +81,6 @@
                     </Frame>
                     <Button Text="Đặt hàng"  Clicked="BuyCart_Clicked" />
                 </StackLayout>
-
                 <!--List Cart End-->
 
             </StackLayout>

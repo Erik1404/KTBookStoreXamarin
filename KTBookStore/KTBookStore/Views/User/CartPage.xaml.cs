@@ -4,6 +4,7 @@ using KTBookStore.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -53,6 +54,10 @@ namespace KTBookStore.Views.User
             TotalAmountLabel.Text = totalAmount.ToString("N2");
 
             UserListView.ItemsSource = userItems;
+
+            double val = 21.34;
+            int res = Convert.ToInt32(val);
+            Console.WriteLine("Converted double {0} to integer {1} ", val, res);
         }
 
         private void BuyCart_Clicked(object sender, EventArgs e)
