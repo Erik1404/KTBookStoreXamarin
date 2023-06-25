@@ -242,26 +242,6 @@
 
                     </Grid>
                     <!--Information End-->
-
-                    <!--<Grid>
-                        -->
-                    <!--Footer start-->
-                    <!--
-                        <pancake:PancakeView Grid.Row="3" HeightRequest="50" >
-                            <pancake:PancakeView.BackgroundGradientStops>
-                                <pancake:GradientStopCollection>
-                                    <pancake:GradientStop Color="#FF4157" Offset="0" />
-                                    <pancake:GradientStop Color="#FF4359" Offset="0.5" />
-                                    <pancake:GradientStop Color="#FE93C5" Offset="1" />
-                                </pancake:GradientStopCollection>
-                            </pancake:PancakeView.BackgroundGradientStops>
-
-                            <Button Text="Mua ngay" TextColor="White" FontSize="15" FontFamily="ThemeFontBold" VerticalOptions="Center" Clicked="AddToCart_Clicked" CommandParameter="{Binding ProductId}"/>
-                        </pancake:PancakeView>
-                        -->
-                    <!--Footer end-->
-                    <!--
-                    </Grid>-->
                 </StackLayout>
             </Grid>
         </ScrollView>

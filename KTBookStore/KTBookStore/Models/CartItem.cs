@@ -17,5 +17,9 @@ namespace KTBookStore.Models
         public string CustomerName { get; set; }
         public string UserId { get; set; }
         public string UserImage { get; set; }
+
+
+        // Cart
+        public double TotalAmount { get; set; }
     }
 }
