@@ -21,8 +21,55 @@ namespace KTBookStore.Services
         public async Task AddCartItem(string userId, CartItem cartItem)
         {
             await firebaseClient.Child(nameof(CartItem)).Child(userId).PostAsync(JsonConvert.SerializeObject(cartItem));
-            //await firebaseClient.Child("CartItem").Child(userId).PostAsync(cartItem);
+            
         }
+
+        public async Task AddToCart(string userId, string bookId, CartItem cartItem)
+        {
+            try
+            {
+                var existingCartItem = await firebaseClient.Child(nameof(CartItem)).Child(userId).Child(bookId).OnceSingleAsync<CartItem>();
+
+                if (existingCartItem != null)
+                {
+                    // Nếu cartItem đã tồn tại trong giỏ hàng, tăng số lượng lên 1
+
+                    // Chuyển đổi giá trị của Quantity thành kiểu số nguyên
+                    if (int.TryParse(existingCartItem.Quantity, out int quantity))
+                    {
+                        // Tăng giá trị số nguyên lên 1 , đã thử kiểu  existingCartItem.Quantity += 1; nhưng bất ổn
+                        quantity++;
+
+                        // Chuyển đổi lại thành chuỗi và gán vào cartItem.Quantity
+                        existingCartItem.Quantity = quantity.ToString();
+
+                        // Cập nhật lại giá trị cartItem lên Firebase Realtime Database
+                        await firebaseClient.Child(nameof(CartItem)).Child(userId).Child(bookId).PutAsync(existingCartItem);
+                    }
+                }
+                else
+                {
+                    // Nếu cartItem chưa tồn tại, tạo mới và đặt số lượng là 1
+                    cartItem.Quantity = "1";
+
+                    // Lưu cartItem vào Firebase Realtime Database
+                    await firebaseClient.Child(nameof(CartItem)).Child(userId).Child(bookId).PutAsync(cartItem);
+                }
+            }
+            catch (Exception ex)
+            {
+                // Xử lý các lỗi khi thêm vào giỏ hàng
+                // ...
+            }
+        }
+
+
+
+
+
+
+
+
 
 
         // Get all này cần : Tên 1 User >> Tên hàng User đã mua , chú thích hết mình rồi đó

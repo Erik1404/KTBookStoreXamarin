@@ -17,12 +17,12 @@
             <RowDefinition Height="2*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        
-        
+
+
         <Image Aspect="AspectFit" Source="{Binding Image}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
         <!--<ImageButton BackgroundColor="Transparent" Aspect="Fill" Source="back.png" Margin="25" WidthRequest="20" HeightRequest="13" 
                      HorizontalOptions="Start" VerticalOptions="Start" Clicked="GoBack"/>-->
-        
+
         <pv:PancakeView x:Name="DetailsView" Grid.Row="1" CornerRadius="30,30,0,0" Padding="35,35,35,0" Margin="0,-40,0,0" 
                         BackgroundColor="White" VerticalOptions="FillAndExpand">
             <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" VerticalScrollBarVisibility="Never">
@@ -39,16 +39,12 @@
                         <StackLayout Orientation="Horizontal" Spacing="15">
                             <StackLayout Orientation="Horizontal" Spacing="10">
                                 <Image WidthRequest="16" Source="author.png"/>
-                                <Label Text="{Binding Author}" FontSize="30"  FontFamily="ThemeFontRegular" TextColor="Chocolate"/>
-                            </StackLayout>
-                            <!--<StackLayout Orientation="Horizontal" Spacing="10">
-                                <Image WidthRequest="16" Source="shower.png"/>
-                                <Label Text="{Binding Property.Bath}" FontSize="12" FontFamily="ThemeFontRegular" TextColor="#707070"/>
+                                <Label Text="{Binding Author}" FontSize="20"  FontFamily="ThemeFontRegular" TextColor="Chocolate"/>
                             </StackLayout>
                             <StackLayout Orientation="Horizontal" Spacing="10">
-                                <Image WidthRequest="16" Source="square.png"/>
-                                <Label Text="{Binding Property.Space}" FontSize="12" FontFamily="ThemeFontRegular" TextColor="#707070"/>
-                            </StackLayout>-->
+                                <Label Text="Số lượng" FontSize="20" FontFamily="ThemeFontRegular" TextColor="Black"/>
+                                <Label Text="{Binding Author}" FontSize="20"  FontFamily="ThemeFontRegular" TextColor="Chocolate"/>
+                            </StackLayout>
                         </StackLayout>
                     </StackLayout>
                     <BoxView HeightRequest="1" VerticalOptions="Start" HorizontalOptions="FillAndExpand" BackgroundColor="#E4E4E4"/>
@@ -65,7 +61,7 @@
                             </pv:PancakeView>
                             <Label Text="Đánh giá" TextColor="#8D8D8D" FontSize="14" FontFamily="ThemeFontMedium" HorizontalTextAlignment="Center"/>
                         </StackLayout>
-                        
+
                         <!--Update Button here-->
                         <StackLayout>
                             <pv:PancakeView BackgroundColor="#E9E9E9" HeightRequest="50" WidthRequest="50" CornerRadius="30" HorizontalOptions="Center">
@@ -100,7 +96,7 @@
                 </StackLayout>
             </ScrollView>
         </pv:PancakeView>
-        
+
         <!--Footer start-->
         <pv:PancakeView Grid.Row="2" HeightRequest="50" >
             <pv:PancakeView.BackgroundGradientStops>

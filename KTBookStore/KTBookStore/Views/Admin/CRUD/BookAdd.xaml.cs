@@ -26,6 +26,7 @@ namespace KTBookStore.Views.Book
             string author = TxtAuthor.Text;
             string desc = TxtDesc.Text;
             string type = TxtType.Text;
+            int quantity = int.Parse(TxtQuantity.Text);
             int price = int.Parse(TxtPrice.Text);
 
             if (string.IsNullOrEmpty(name))
@@ -55,6 +56,7 @@ namespace KTBookStore.Views.Book
             book.BookName = name;
             book.Author = author;
             book.Desc = desc;
+            book.Quantity = quantity;
             book.Type = type;
             book.Price = price;
             
@@ -79,6 +81,7 @@ namespace KTBookStore.Views.Book
             TxtAuthor.Text = string.Empty;
             TxtDesc.Text = string.Empty;
             TxtType.Text = string.Empty;
+            TxtQuantity.Text = string.Empty;
             TxtPrice.Text = string.Empty;
         }
     }

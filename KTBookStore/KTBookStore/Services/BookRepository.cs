@@ -65,6 +65,7 @@ namespace KTBookStore.Services
                 Author = item.Object.Author,
                 Type = item.Object.Type,
                 Price = item.Object.Price,
+                Quantity = item.Object.Quantity,
                 IdBook = item.Key,
             }).ToList();
         }
@@ -78,6 +79,7 @@ namespace KTBookStore.Services
                 Image = item.Object.Image,
                 Author = item.Object.Author,
                 Type = item.Object.Type,
+                Quantity = item.Object.Quantity,
                 Price = item.Object.Price,
                 IdBook = item.Key,
             }).Where(c => c.BookName.ToLower().Contains(name.ToLower())).ToList();

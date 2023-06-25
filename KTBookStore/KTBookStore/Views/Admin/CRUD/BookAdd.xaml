@@ -22,6 +22,9 @@
             <Entry x:Name="TxtType"
                    Placeholder="Thể loại"
                   />
+            <Entry x:Name="TxtQuantity"
+                   Placeholder="Số lượng"
+                  />
             <Entry x:Name="TxtPrice"
                    Placeholder="Giá sách"
                   />
