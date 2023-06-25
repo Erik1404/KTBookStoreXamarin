@@ -37,10 +37,10 @@ namespace KTBookStore.Services
                     // Chuyển đổi giá trị của Quantity thành kiểu số nguyên
                     if (int.TryParse(existingCartItem.Quantity, out int quantity))
                     {
-                        // Tăng giá trị số nguyên lên 1 , đã thử kiểu  existingCartItem.Quantity += 1; nhưng bất ổn
+                        // Tăng giá trị số nguyên lên 1
                         quantity++;
 
-                        // Chuyển đổi lại thành chuỗi và gán vào cartItem.Quantity
+                        // Cập nhật lại giá trị của Quantity
                         existingCartItem.Quantity = quantity.ToString();
 
                         // Cập nhật lại giá trị cartItem lên Firebase Realtime Database
@@ -64,43 +64,6 @@ namespace KTBookStore.Services
         }
 
 
-
-
-
-
-
-
-
-
-        // Get all này cần : Tên 1 User >> Tên hàng User đã mua , chú thích hết mình rồi đó
-        //public async Task<List<CartItem>> GetAllCartItems()
-        //{
-        //    // Lấy tất cả các CartItem từ Firebase Realtime Database
-        //    var cartItems = await firebaseClient.Child(nameof(CartItem)).OnceAsync<CartItem>();
-
-        //    // Sử dụng phương thức Select để biến đổi mỗi CartItem thành một Task<CartItem>
-        //    var result = cartItems.Select(async item =>
-        //    {
-        //        // Lấy userId từ khóa của CartItem
-        //        var userId = item.Key;
-
-        //        // Lấy thông tin người dùng (UserManager) từ Firebase Realtime Database
-        //        var user = await firebaseClient.Child(nameof(UserManager)).Child(userId).OnceSingleAsync<UserManager>();
-
-        //        // Tạo một đối tượng CartItem mới và gán các thuộc tính từ CartItem trong Firebase Realtime Database
-        //        return (await firebaseClient.Child(nameof(CartItem)).Child(userId).OnceAsync<CartItem>()).Select(itemuserchoose => new CartItem
-        //        {
-        //            BookName = itemuserchoose.Object.BookName,
-        //            Image = itemuserchoose.Object.Image,
-        //            Price = itemuserchoose.Object.Price,
-        //            BookId = itemuserchoose.Key,
-        //            CustomerName = user?.UserName // Lấy tên khách hàng từ thông tin người dùng
-        //        });
-        //    }).ToList();
-
-        //    // Chờ cho tất cả các tác vụ hoàn thành và chuyển đổi kết quả thành danh sách List<CartItem>
-        //    return (await Task.WhenAll(result)).ToList();
-        //}
 
 
         // Lấy 2 Key quá khó , xé nhỏ ra , lấy All User đã có giỏ hàng trước , Chọn chỉ định User >> Get Item sau
@@ -132,7 +95,6 @@ namespace KTBookStore.Services
         public async Task<List<CartItem>> GetUserItems(string userId)
         {
             var userItems = new List<CartItem>();
-
             try
             {
                 // Lấy danh sách các CartItem của người dùng từ Firebase Realtime Database
@@ -147,10 +109,18 @@ namespace KTBookStore.Services
                         BookName = item.Object.BookName,
                         Image = item.Object.Image,
                         Price = item.Object.Price,
-                        BookId =  item.Key,
+                        BookId = item.Key,
+                        Quantity = item.Object.Quantity,
+
+                        // Các thuộc tính khác của CartItem
+                        TotalAmount = item.Object.Price * Convert.ToDouble(item.Object.Quantity), // Tính toán tổng tiền dựa trên giá và số lượng của sản phẩm
+                        
                     };
 
                     userItems.Add(cartItem);
+
+                    
+                   
                 }
             }
             catch (Exception ex)
@@ -161,6 +131,9 @@ namespace KTBookStore.Services
 
             return userItems;
         }
+
+
+        // Tính tổng tiền 
 
     }
 }

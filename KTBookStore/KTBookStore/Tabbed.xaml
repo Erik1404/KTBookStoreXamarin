@@ -11,7 +11,7 @@
             >
   <!--Pages can be added as references or inline-->
     <local:HomePage Title="Home" IconImageSource="home.png" />
-    <local:AccountPage Title="Tôi" IconImageSource="user.png"/>
+    <local:AccountPage Title="Tài khoản" IconImageSource="user.png"/>
     <local:CartPage Title="Đơn hàng" IconImageSource="cart.jpg"/>
 
 </TabbedPage>
